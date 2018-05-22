@@ -12,6 +12,8 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/control-bar.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/manu-bar.css" rel="stylesheet">
+    <link href="css/grid-signup.css" rel="stylesheet">
 
 </head>
 
@@ -74,20 +76,76 @@
                     </a>
                 </span>
             </div>
-            <div id="menu-bar">
-                <div>
-                    <a href="#home">Home</a>
-                    <a href="#news">News</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#about">About</a>
-                </div>
-            </div>
 
+            <div id="menu-bar">
+                    <div class="menu-list">
+                        <a href="#home">시계</a>
+                        <a href="#news">전등</a>
+                        <a href="#contact">화분</a>
+                        <a href="#about">수납</a>
+                        <a href="#contact">장난감</a>
+                        <a href="#about">기타</a>
+                    </div>
+                </div>
         </header>
     </div>
 
     <div id="content">
-        로긴
+        <form class="signup-container">
+            <div class="grid-signup control-group">
+                <div class="signup-title">회원 가입</div>
+
+                <div class="signup-id-title">
+                    <label class="form-check-label">아이디</label>
+                </div>
+                <div class="signup-id-input">
+                    <input class="form-control" type="text" name="id">
+                </div>
+
+                <div class="signup-password-title">
+                    <label class="form-check-label">비밀번호</label>
+                </div>
+                <div class="signup-password-input">
+                    <input class="form-control" type="password" name="password">
+                </div>
+
+                <div class="signup-name-title">
+                    <label class="form-check-label">이름</label>
+                </div>
+                <div class="signup-name-input">
+                    <input class="form-control" type="text" name="name">
+                </div>
+
+                <div class="signup-age-title">
+                    <label class="form-check-label">나이</label>
+                </div>
+                <div class="signup-age-input">
+                    <input class="form-control" type="number" name="age">
+                </div>
+
+                <div class="signup-gender-title">
+                    <label class="form-check-label">성별</label>
+                </div>
+                <div class="signup-gender-input">
+                    남<input type="radio" name="gender" value="남">
+                    여<input type="radio" name="gender" value="여">
+                </div>
+
+                <div class="signup-phone-title">
+                    <label class="form-check-label">전화번호</label>
+                </div>
+                <div class="signup-phone-input">
+                    <input type="tel" class="form-control bfh-phone" data-format="ddd-ddd-dddd" name="phone">
+                </div>
+
+                <div class="signup-introduction-title">
+                    <label class="form-check-label">소개</label>
+                </div>
+                <div class="signup-introduction-input">
+                    <input class="form-control" type="text" name="introduction">
+                </div>
+            </div>
+        </form>
     </div>
 
     <div id="footer">

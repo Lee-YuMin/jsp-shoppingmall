@@ -13,10 +13,11 @@ header {
 }
 
 #content {
+    display: block;
     width: 100%;
-    /* background-color: #F7F7F7; */
-    background-color:aqua;
+    background-color: #F7F7F7;
     height: auto;
+    text-align: center;
 }
 
 #footer {
@@ -50,3 +51,4 @@ header {
 .center-div {
     text-align: center;
 }
+
