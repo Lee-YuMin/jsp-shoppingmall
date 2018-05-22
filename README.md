@@ -1,8 +1,12 @@
 http://www.jinvas.com/shop/main/index.php
 
+DBì •ë³´ - root / 0000
+admin / amdin
+DBëª… - shopping
+
 Products
 Sequnece - seq INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-product_name - Á¦Ç° ¸í,
+product_name - ï¿½ï¿½Ç° ï¿½ï¿½,
 asg_group - kid, adult, all
 type - clock, lighting, flowerpot, storage, toy, etc
 price - Num
@@ -19,3 +23,15 @@ age
 gender
 phone
 introduction
+
+// USER TABEL CREATE QUERY
+CREATE TABLE users (
+sequence INT PRIMARY KEY AUTO_INCREMENT,
+id VARCHAR(20) NOT NULL,
+password VARCHAR(20) NOT NULL,
+name VARCHAR(20) NOT NULL,
+age INT NOT NULL,
+gender VARCHAR(10) DEFAULT 'M',
+phone VARCHAR(13),
+introduction VARCHAR(1000)
+) ENGINE=INNODB;

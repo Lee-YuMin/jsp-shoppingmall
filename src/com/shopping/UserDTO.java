@@ -11,6 +11,7 @@ public class UserDTO implements Serializable {
 	private String gender;
 	private String phone;
 	private String introduction;
+	
 	public int getSquence() {
 		return Squence;
 	}

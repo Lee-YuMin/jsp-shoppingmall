@@ -6,10 +6,10 @@ public class DBUtil {
 	public static Connection getConnetcion() {
 		Connection conn = null;
 
-		String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-		String DB_URL = "jdbc:.....?";
-		String DB_USER = "";
-		String DB_PASSWORD = "";
+		String DB_DRIVER = "com.mysql.jdbc.Driver";
+		String DB_URL = "jdbc:mysql://localhost:3306/shopping";
+		String DB_USER = "root";
+		String DB_PASSWORD = "0000";
 
 		try {
 			Class.forName(DB_DRIVER);
