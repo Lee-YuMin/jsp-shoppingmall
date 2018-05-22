@@ -10,6 +10,7 @@
     </script>
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="BootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
     <link href="css/control-bar.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/manu-bar.css" rel="stylesheet">
@@ -17,7 +18,7 @@
 
 </head>
 
-<body>
+<body>    
     <div id="control-bar">
         <div class='center-div'>
             <ul>
@@ -31,10 +32,10 @@
                     <a href="main.html">나눔게시판</a>
                 </li>
                 <li>
-                    <a href="login.html">로그인</a>
+                    <a href="main.html">로그인</a>
                 </li>
                 <li>
-                    <a href="main.html">회원가입</a>
+                    <a href="signup.html">회원가입</a>
                 </li>
                 <li>
                     <a href="main.html">마이페이지</a>
@@ -91,7 +92,7 @@
     </div>
 
     <div id="content">
-        <form class="signup-container">
+        <form method="post" action="" class="signup-container">
             <div class="grid-signup control-group">
                 <div class="signup-title">회원 가입</div>
 
@@ -127,8 +128,14 @@
                     <label class="form-check-label">성별</label>
                 </div>
                 <div class="signup-gender-input">
-                    남<input type="radio" name="gender" value="남">
-                    여<input type="radio" name="gender" value="여">
+                    <label class="custom-control custom-radio">
+                        <input name="gender" type="radio" class="custom-control-input" value="man">
+                        <span class="custom-control-description">남</span>
+                    </label>
+                    <label class="custom-control custom-radio">
+                        <input name="gender" type="radio" class="custom-control-input" value="woman">
+                        <span class="custom-control-description">여</span>
+                    </label>
                 </div>
 
                 <div class="signup-phone-title">
@@ -144,7 +151,14 @@
                 <div class="signup-introduction-input">
                     <input class="form-control" type="text" name="introduction">
                 </div>
+
+                <div class="signup-input">
+                    <input id="signup-submit" class="btn btn-default" type="submit" value="회원가입">
+                    <input class="btn btn-default" type="submit" value="이전으로">
+                </div>
             </div>
+
+            
         </form>
     </div>
 
@@ -152,6 +166,11 @@
 
     </div>
 
+
+    <!-- Bootstrap -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Form Helpers -->
+    <script src="BootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js"></script>
 </body>
 
 </html>
