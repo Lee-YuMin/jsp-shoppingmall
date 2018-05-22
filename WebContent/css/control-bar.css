@@ -1,0 +1,39 @@
+#control-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    position: flex;            
+    border-bottom: solid 1px #eeeeee;
+}
+
+#control-bar ul {
+    display:inline-block;
+    overflow: auto;
+    list-style-type: none;
+    vertical-align: middle;
+    padding: 0;
+    margin: 3px;
+    margin-bottom: 10px;
+}
+
+#control-bar li {
+    width: 70px;
+    float: none;
+    font-size: 12px;
+    display: inline-block;
+    border-right: solid 1px #eeeeee;
+    vertical-align: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333333;
+    direction: rtl;
+}
+
+#control-bar a {
+    color: #333333;
+    text-decoration: none;
+}
+
+#control-bar a:hover {
+    font-weight: bold;
+    color: black;
+}
