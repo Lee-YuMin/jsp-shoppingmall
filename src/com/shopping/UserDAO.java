@@ -1,5 +1,6 @@
 package com.shopping;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,17 +9,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 public class UserDAO extends Dao {
 	public UserDAO() {
 		// TODO table name insert
-		super(null, "table_name");
+		super(null, "users");
+
+		System.out.println("11111");
 	}
 
 	public UserDAO(Connection conn) {
-		super(conn, "table_name");
+		super(conn, "users");
 	}
-
+	
 	List<UserDTO> selectAllUsers() {
 		List<UserDTO> list = new ArrayList<UserDTO>();
 		String query = "SELECT * FROM " + tableName; // 모든 사용자의 정보를 가져온다.

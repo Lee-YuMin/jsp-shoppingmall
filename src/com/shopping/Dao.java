@@ -2,11 +2,13 @@ package com.shopping;
 
 import java.sql.Connection;
 
+import javax.servlet.http.HttpServlet;
+
 // DAO를 상속하는 최상위 클래스
 
 public class Dao {
 	Connection conn;
-	String tableName ="";
+	String tableName ="users";
 	
 	Dao() {
 		this(null, "");
