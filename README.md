@@ -1,4 +1,6 @@
-http://www.jinvas.com/shop/main/index.php
+모델 사이트 : http://www.jinvas.com/shop/main/index.php
+참조 사이트 : 
+http://all-record.tistory.com/120
 
 DB정보 - root / 0000
 admin / amdin

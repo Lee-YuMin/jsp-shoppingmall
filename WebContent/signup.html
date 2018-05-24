@@ -8,7 +8,8 @@
     </script>
     <script type="text/javascript">
     </script>
-
+    <script src="js/signup-check-value.js">
+    </script>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="BootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
     <link href="css/control-bar.css" rel="stylesheet">
@@ -92,7 +93,7 @@
     </div>
 
     <div id="content">
-        <form method="post" action="signup" class="signup-container">
+        <form class="signup-container" method="post" action="signup" name="userInfo" onsubmit="return checkValue()">
             <div class="grid-signup control-group">
                 <div class="signup-title">회원 가입</div>
 
