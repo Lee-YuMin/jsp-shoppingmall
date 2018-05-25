@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 
 // DAO를 상속하는 최상위 클래스
 
-public class Dao {
+public class Dao extends HttpServlet{
 	Connection conn;
 	String tableName ="users";
 	

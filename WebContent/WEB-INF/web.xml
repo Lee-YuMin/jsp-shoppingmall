@@ -9,7 +9,9 @@
   
   <servlet-mapping>
   	<servlet-name>userController</servlet-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/signup</url-pattern>
+  	<url-pattern>/signup-sucess</url-pattern>
+  	<url-pattern>/do-signup</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

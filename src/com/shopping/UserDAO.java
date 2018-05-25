@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,23 +19,85 @@ public class UserDAO extends Dao {
 	public UserDAO() {
 		// TODO table name insert
 		super(null, "users");
-
-		System.out.println("11111");
 	}
 
 	public UserDAO(Connection conn) {
 		super(conn, "users");
 	}
 	
+	@Override
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+	
+	@Override
+	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+	
+	public void doProcess(HttpServletRequest request, HttpServletResponse response) 
+		 	throws ServletException, IOException {
+	
+		String requestURI = request.getRequestURI();
+		int cmdIdx = requestURI.lastIndexOf("/") + 1;
+		String command = requestURI.substring(cmdIdx);
+		
+		ActionForward forward = null;
+		Action action = null;
+		
+		String form = "main.jsp?contentPage=page/";
+		
+		try {
+			if(command.equals("main")) 
+			{	
+				forward=new ActionForward();
+				forward.setRedirect(false);
+				forward.setNextPath("list.jsp");
+			}
+			else if(command.equals("signup"))
+			{
+				forward=new ActionForward();
+				forward.setNextPath(form+"signup.jsp");
+			}			
+			else if(command.equals("signup-sucess"))
+			{
+				forward=new ActionForward();
+				forward.setNextPath(form+"signup-sucess.jsp");
+			}
+			else if(command.equals("do-signup"))
+			{
+				forward=new ActionForward();
+				forward.setNextPath(form+"do-signup.jsp");
+			}
+			
+			
+			// í™”ë©´ì´ë™ - isRedirext() ê°’ì— ë”°ë¼ sendRedirect ë˜ëŠ” forwardë¥¼ ì‚¬ìš©
+			// sendRedirect : ìƒˆë¡œìš´ í˜ì´ì§€ì—ì„œëŠ” requestì™€ responseê°ì²´ê°€ ìƒˆë¡­ê²Œ ìƒì„±ëœë‹¤.
+			// forward : í˜„ì¬ ì‹¤í–‰ì¤‘ì¸ í˜ì´ì§€ì™€ forwadì— ì˜í•´ í˜¸ì¶œë  í˜ì´ì§€ëŠ” requestì™€ response ê°ì²´ë¥¼ ê³µìœ 
+			if(forward != null){
+				if (forward.isRedirect()) {
+					response.sendRedirect(forward.getNextPath());
+				} else {
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher(forward.getNextPath());
+					dispatcher.forward(request, response);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	List<UserDTO> selectAllUsers() {
 		List<UserDTO> list = new ArrayList<UserDTO>();
-		String query = "SELECT * FROM " + tableName; // ¸ğµç »ç¿ëÀÚÀÇ Á¤º¸¸¦ °¡Á®¿Â´Ù.
+		String query = "SELECT * FROM " + tableName;
 		ResultSet rs = null;
 		Statement stmt = null;
 
 		try {
-			stmt = conn.createStatement(); // Statement¸¦ °¡Á®¿Â´Ù.
-			rs = stmt.executeQuery(query); // SQL¹®À» ½ÇÇàÇÑ´Ù.
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 				UserDTO u = new UserDTO();
@@ -58,14 +121,14 @@ public class UserDAO extends Dao {
 
 	
 	UserDTO selectUser(UserDTO u) {
-		String query = "SELECT * FROM " + tableName + " WHERE ID = ?"; // »ç¿ëÀÚ Á¤º¸¸¦ °¡Á®¿Â´Ù. ''¸¦ »ç¿ëÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+		String query = "SELECT * FROM " + tableName + " WHERE ID = ?";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
 		try {
 			ps = conn.prepareStatement(query);
 			ps.setString(1, u.getId());
-			rs = ps.executeQuery(); // rs = ps.executeQuery(query); °ú °°ÀÌ ÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+			rs = ps.executeQuery(); // rs = ps.executeQuery(query);
 
 			while (rs.next()) {
 				u.setId(rs.getString(1));
@@ -87,12 +150,12 @@ public class UserDAO extends Dao {
 
 	int deleteUser(UserDTO u) {
 		int result = 0;
-		String query = "DELETE FROM " + tableName + " WHERE ID = ?"; // »ç¿ëÀÚ Á¤º¸¸¦ °¡Á®¿Â´Ù. ''¸¦ »ç¿ëÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+		String query = "DELETE FROM " + tableName + " WHERE ID = ?";
 		try (PreparedStatement ps = conn.prepareStatement(query);) {
 			conn.setAutoCommit(true);
-			// 3.2 Äõ¸® ¼ÂÆÃ & ½ÇÇà
+			// 3.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ & ï¿½ï¿½ï¿½ï¿½
 			ps.setString(1, u.getId());
-			result = ps.executeUpdate(); // ps.executeUpdate(sql);°ú °°ÀÌ ÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+			result = ps.executeUpdate(); // ps.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -102,12 +165,12 @@ public class UserDAO extends Dao {
 
 	int insertUser(UserDTO u) {
 		int result = 0;
-		String sql = "INSERT INTO " + tableName + " VALUES " + " (?,?,?,?,?,?,?)"; // ""¾È¿¡ ;¸¦ ³ÖÁö ¾Ê¾Æµµ µÈ´Ù.
+		String sql = "INSERT INTO " + tableName + " VALUES " + " (?,?,?,?,?,?,?)";
 		// String sql = "insert into USER_INFO values (?,?,?,?, sysdate, sysdate)"; //
-		// ""¾È¿¡ ;¸¦ ³ÖÁö ¾Ê¾Æµµ µÈ´Ù.
+		// ""ï¿½È¿ï¿½ ;ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ ï¿½È´ï¿½.
 		try (PreparedStatement ps = conn.prepareStatement(sql);) {
 			conn.setAutoCommit(true);
-			// 3.2 Äõ¸® ¼ÂÆÃ & ½ÇÇà
+			// 3.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ & ï¿½ï¿½ï¿½ï¿½
 			ps.setString(1, u.getId());
 			ps.setString(2, u.getPassword());
 			ps.setString(3, u.getName());
@@ -116,7 +179,7 @@ public class UserDAO extends Dao {
 			ps.setString(6, u.getPhone());
 			ps.setString(7, u.getIntroduction());
 
-			result = ps.executeUpdate(); // ps.executeUpdate(sql);°ú °°ÀÌ ÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+			result = ps.executeUpdate(); // ps.executeUpdate(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,10 +190,9 @@ public class UserDAO extends Dao {
 	int updateUser(UserDTO u) {
 		int result = 0;
 		String sql = "UPDATE " + tableName + " SET password=?, name=?, age=?, gender=?, phone=?, introduction=? "
-				+ " WHERE id = ?"; // ""¾È¿¡ ;¸¦ ³ÖÁö ¾Ê¾Æµµ µÈ´Ù.
+				+ " WHERE id = ?"; 
 		try (PreparedStatement ps = conn.prepareStatement(sql);) {
 			conn.setAutoCommit(true);
-			// 3.2 Äõ¸® ¼ÂÆÃ & ½ÇÇà
 			ps.setString(1, u.getPassword());
 			ps.setString(2, u.getName());
 			ps.setInt(3, u.getAge());
@@ -139,9 +201,8 @@ public class UserDAO extends Dao {
 			ps.setString(5, u.getPhone());
 			ps.setString(6, u.getIntroduction());
 
-			result = ps.executeUpdate(); // ps.executeUpdate(sql);°ú °°ÀÌ ÇÏÁö ¾ÊÀ½¿¡ ÁÖÀÇ
+			result = ps.executeUpdate();
 		} catch (Exception e) {
-			// 5. ½ÇÆĞÇÏ¸é, ¿¡·¯¸¦ º¸¿©Áà?
 			e.printStackTrace();
 		}
 
