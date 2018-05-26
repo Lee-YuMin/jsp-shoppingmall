@@ -37,3 +37,16 @@ gender VARCHAR(10) DEFAULT 'M',
 phone VARCHAR(13),
 introduction VARCHAR(1000)
 ) ENGINE=INNODB;
+
+
+// PRODUCT TABLE CREATE QUERY
+CREATE TABLE products (
+    sequence INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(50) NOT NULL,
+    age_group VARCHAR(20) NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    price INT NOT NULL,
+    discount INT NOT NULL,
+    hot BOOLEAN NOT NULL DEFAULT false,
+    created_date DATE
+);
