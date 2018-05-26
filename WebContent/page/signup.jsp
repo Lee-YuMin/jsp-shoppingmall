@@ -9,12 +9,12 @@
 
 <body>    
     <div>
-        <form method="post" action="signup-sucess" class="signup-container" name="userInfo" onsubmit="return checkValue()">
+        <form method="post" action="do-signup" class="signup-container" name="userInfo" onsubmit="return checkValue()">
             <div class="grid-signup control-group">
-                <div class="signup-title">회원가입</div>
+                <div class="signup-title">회원가입</div>
 
                 <div class="signup-id-title">
-                    <label class="form-check-label">아이디</label>
+                    <label class="form-check-label">아이디</label>
                 </div>
                 <div class="signup-id-input">
                     <input class="form-control" type="text" name="id">
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="signup-name-title">
-                    <label class="form-check-label">이름</label>
+                    <label class="form-check-label">이름</label>
                 </div>
                 <div class="signup-name-input">
                     <input class="form-control" type="text" name="name">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="signup-gender-title">
-                    <label class="form-check-label">성별</label>
+                    <label class="form-check-label">성별</label>
                 </div>
                 <div class="signup-gender-input">
                     <label class="custom-control custom-radio">
@@ -59,18 +59,18 @@
                     <label class="form-check-label">핸드폰</label>
                 </div>
                 <div class="signup-phone-input">
-                    <input type="tel" class="form-control bfh-phone" data-format="ddd-ddd-dddd" name="phone">
+                    <input type="tel" class="form-control bfh-phone" data-format="ddd-dddd-dddd" name="phone">
                 </div>
 
                 <div class="signup-introduction-title">
-                    <label class="form-check-label">소개</label>
+                    <label class="form-check-label">소개</label>
                 </div>
                 <div class="signup-introduction-input">
                     <input class="form-control" type="text" name="introduction">
                 </div>
 
                 <div class="signup-input">
-                    <input id="signup-submit" class="btn btn-default" type="submit" value="회원가입">
+                    <input id="signup-submit" class="btn btn-default" type="submit" value="회원가입">
                     <input class="btn btn-default" type="submit" value="메인으로">
                 </div>
             </div>

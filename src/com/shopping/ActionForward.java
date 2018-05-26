@@ -1,15 +1,15 @@
 package com.shopping;
 
 /**
- * ÆäÀÌÁö ÀÌµ¿À» Ã³¸®ÇÏ±â À§ÇÑ Å¬·¡½º
+ * í˜ì´ì§€ ì´ë™ì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤
  */
 public class ActionForward {
 	
 	private boolean isRedirect = false;
-	private String nextPath = null; // ÀÌµ¿ÇÒ ´ÙÀ½ È­¸é
+	private String nextPath = null; // ì´ë™í•  ë‹¤ìŒ í™”ë©´
 	
 	/**
-	 * Redirect »ç¿ë¿©ºÎ, falseÀÌ¸é Forward »ç¿ë
+	 * Redirect ì‚¬ìš©ì—¬ë¶€, falseì´ë©´ Forward ì‚¬ìš©
 	 * @return isRedirect
 	 */
 	public boolean isRedirect() {

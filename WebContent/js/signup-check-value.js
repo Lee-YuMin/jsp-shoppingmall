@@ -19,10 +19,10 @@ function checkValue() {
         return false;
     }
 
-    if (!document.userInfo.gender.value) {
-        alert("성별을 선택하세요.");
-        return false;
-    }
+//    if (!document.userInfo.gender.value) {
+//        alert("성별을 선택하세요.");
+//        return false;
+//    }
 
     if (!document.userInfo.phone.value) {
         alert("전화번호를 입력하세요.");

@@ -3,7 +3,7 @@
 <%
 	String contentPage=request.getParameter("contentPage");
 	if(contentPage==null)
-		contentPage="page/signup.jsp";
+		contentPage="page/login.jsp";
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -19,6 +19,7 @@
 	<!-- Bootstrap Form Helpers -->
     <script src="BootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js"></script>
     <script src="js/signup-check-value.js"></script>
+    <script src="js/login-check-value.js"></script>
     
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="BootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">

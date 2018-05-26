@@ -4,9 +4,9 @@ import java.sql.Connection;
 
 import javax.servlet.http.HttpServlet;
 
-// DAO를 상속하는 최상위 클래스
+// DAO
 
-public class Dao extends HttpServlet{
+public class Dao {
 	Connection conn;
 	String tableName ="users";
 	

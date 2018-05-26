@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class UserDAO extends Dao {
+	private static UserDAO instance;
+	
 	public UserDAO() {
 		// TODO table name insert
 		super(null, "users");
@@ -25,69 +27,12 @@ public class UserDAO extends Dao {
 		super(conn, "users");
 	}
 	
-	@Override
-	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+	public static UserDAO getInstance(){
+		if(instance==null)
+			instance=new UserDAO();
+		return instance;
 	}
-	
-	@Override
-	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-	
-	public void doProcess(HttpServletRequest request, HttpServletResponse response) 
-		 	throws ServletException, IOException {
-	
-		String requestURI = request.getRequestURI();
-		int cmdIdx = requestURI.lastIndexOf("/") + 1;
-		String command = requestURI.substring(cmdIdx);
-		
-		ActionForward forward = null;
-		Action action = null;
-		
-		String form = "main.jsp?contentPage=page/";
-		
-		try {
-			if(command.equals("main")) 
-			{	
-				forward=new ActionForward();
-				forward.setRedirect(false);
-				forward.setNextPath("list.jsp");
-			}
-			else if(command.equals("signup"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form+"signup.jsp");
-			}			
-			else if(command.equals("signup-sucess"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form+"signup-sucess.jsp");
-			}
-			else if(command.equals("do-signup"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form+"do-signup.jsp");
-			}
-			
-			
-			// 화면이동 - isRedirext() 값에 따라 sendRedirect 또는 forward를 사용
-			// sendRedirect : 새로운 페이지에서는 request와 response객체가 새롭게 생성된다.
-			// forward : 현재 실행중인 페이지와 forwad에 의해 호출될 페이지는 request와 response 객체를 공유
-			if(forward != null){
-				if (forward.isRedirect()) {
-					response.sendRedirect(forward.getNextPath());
-				} else {
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher(forward.getNextPath());
-					dispatcher.forward(request, response);
-				}
-			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	List<UserDTO> selectAllUsers() {
 		List<UserDTO> list = new ArrayList<UserDTO>();
@@ -165,12 +110,10 @@ public class UserDAO extends Dao {
 
 	int insertUser(UserDTO u) {
 		int result = 0;
-		String sql = "INSERT INTO " + tableName + " VALUES " + " (?,?,?,?,?,?,?)";
-		// String sql = "insert into USER_INFO values (?,?,?,?, sysdate, sysdate)"; //
-		// ""�ȿ� ;�� ���� �ʾƵ� �ȴ�.
+		String sql = "INSERT INTO " + tableName + " VALUES " + " (null,?,?,?,?,?,?,?)";
+		// String sql = "insert into USER_INFO values (?,?,?,?, sysdate, sysdate)";
 		try (PreparedStatement ps = conn.prepareStatement(sql);) {
 			conn.setAutoCommit(true);
-			// 3.2 ���� ���� & ����
 			ps.setString(1, u.getId());
 			ps.setString(2, u.getPassword());
 			ps.setString(3, u.getName());
@@ -207,5 +150,49 @@ public class UserDAO extends Dao {
 		}
 
 		return result;
+	}
+	
+	public int loginCheck(String id, String pw) 
+	{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String dbPW = ""; // db에서 꺼낸 비밀번호를 담을 변수
+		int x = -1;
+
+		try {
+			// 쿼리 - 먼저 입력된 아이디로 DB에서 비밀번호를 조회한다.
+			String query = "SELECT password FROM users WHERE ID=?";
+
+			pstmt = conn.prepareStatement(query);
+			conn.setAutoCommit(true);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+			{
+				dbPW = rs.getString("password"); // 비번을 변수에 넣는다.
+
+				if (dbPW.equals(pw)) 
+					x = 1; // 넘겨받은 비번과 꺼내온 비번 비교. 같으면 인증성공
+				else 				 
+					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+				
+			} else {
+				x = -1; // 해당 아이디가 없을 경우
+			}
+
+			return x;
+
+		} catch (Exception sqle) {
+			throw new RuntimeException(sqle.getMessage());
+		} finally {
+//			try{
+//				if ( pstmt != null ){ pstmt.close(); pstmt=null; }
+//				if ( conn != null ){ conn.close(); conn=null;	}
+//			}catch(Exception e){
+//				throw new RuntimeException(e.getMessage());
+//			}
+		}
 	}
 }
