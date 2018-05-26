@@ -9,13 +9,13 @@
     <div>
         <div class='center-div'>
             <ul>
-                <li>
+                <li class="inactivity">
                     <a href="">공지사항</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">리뷰</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">나눔게시판</a>
                 </li>
                 <li>
@@ -24,31 +24,31 @@
                 <li>
                     <a href="signup">회원가입</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">마이페이지</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">장바구니</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">주문조회</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">커뮤니티</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">b2b/도매</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">매장안내</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">페이스북</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">인스트</a>
                 </li>
-                <li>
+                <li class="inactivity">
                     <a href="">블로그</a>
                 </li>
             </ul>

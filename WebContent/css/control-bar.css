@@ -28,11 +28,14 @@
 }
 
 #control-bar a {
-    color: #333333;
     text-decoration: none;
 }
 
 #control-bar a:hover {
     font-weight: bold;
     color: black;
+}
+
+.inactivity a{
+    color: #aaaaaa !important;
 }
