@@ -8,7 +8,7 @@ DB명 - shopping
 
 Products
 Sequnece - seq INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-product_name - ��ǰ ��,
+product_name - 제품 명,
 asg_group - kid, adult, all
 type - clock, lighting, flowerpot, storage, toy, etc
 price - Num

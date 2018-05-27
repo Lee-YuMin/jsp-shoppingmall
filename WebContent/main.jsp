@@ -27,6 +27,7 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/manu-bar.css" rel="stylesheet">
     <link href="css/grid-signup.css" rel="stylesheet">
+    <link href="css/grid-product-add.css" rel="stylesheet">
     <link href="css/signup-sucess.css" rel="stylesheet">
     
 </head>

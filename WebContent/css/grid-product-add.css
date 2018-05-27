@@ -1,4 +1,4 @@
-.grid-signup {
+.grid-product-add {
   display: grid;
   grid-template-columns: repeat(2, 9);
   grid-gap: 10px;
@@ -13,23 +13,23 @@
   display: inline-block;
 }
 
-.form-signup {
+.form-product-add {
   text-align: center;
   border: 5px solid #cccccc;
 }
 
 
-.grid-signup input {
+.grid-product-add input {
   min-width: 300px;
   margin-right: 100px;
 }
 
-.signup-container {
+.product-add-container {
   width: 50%;
   margin: 0 auto;
 }
 
-.signup-title {
+.product-add-title {
   grid-row: 1;
   grid-column: 1 / 3;
   text-align: center;
@@ -37,125 +37,113 @@
   margin-top: 10px;
 }
 
-.signup-id-title {
+.product-add-product-name-title {
   grid-row: 2;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-id-input {
+.product-add-product-name-input {
   grid-row: 2;
   grid-column: 2;
   margin-left: 10px;
 }
 
-.signup-password-title {
+.product-add-age-group-title {
   grid-row: 3;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-password-input {
+.product-add-age-group-input {
   grid-row: 3;
   grid-column: 2;
   margin-left: 10px;
 }
 
-.signup-name-title {
+.product-add-type-title {
   grid-row: 4;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-name-input {
+.product-add-type-input {
   grid-row: 4;
   grid-column: 2;
   margin-left: 10px;
 }
 
-.signup-age-title {
+.product-add-price-title {
   grid-row: 5;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-age-input {
+.product-add-price-input {
   grid-row: 5;
   grid-column: 2;
   margin-left: 10px;
 }
 
-.signup-gender-title {
+.product-add-discount-title {
   grid-row: 6;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-gender-input {
+.product-add-discount-input {
   grid-row: 6;
   grid-column: 2;
   margin-left: 10px;
   text-align: left;
 }
 
-.signup-phone-title {
+.product-add-hot-title {
   grid-row: 7;
   grid-column: 1;
   text-align: right;
   margin-right: 5px;
 }
 
-.signup-phone-input {
+.product-add-hot-input {
   grid-row: 7;
   grid-column: 2;
   margin-left: 10px;
 }
-/* 
-.signup-phone-input input {
-  width: 150px;
-} */
 
-.signup-introduction-title {
-  grid-row: 8;
-  grid-column: 1;
-  text-align: right;
-  margin-right: 5px;
-}
-
-.signup-introduction-input {
-  grid-row: 8;
-  grid-column: 2;
-  margin-left: 10px;
-}
-
-.signup-input {
+.product-add-input {
   grid-row: 9;
   grid-column: 1/3;
   text-align: center;
 }
 
-.signup-gender-input input{
+.product-add-gender-input input{
   width: 20px;
   margin-left: 15px;
 }
 
-.signup-input input {
+.product-add-input input {
   width: 150px;
   font-weight: bold;
   margin: 3px;
 }
 
-.signup-input #signup-submit {
+#product-submit {
   color: #e5302c;
 }
 
 .form-check-label {
   padding-top: 6px;
+}
+
+.bfh-selectbox-options{
+  right: 0;
+  clear: left;
 }
 
 /* Number Type의 input의 오른쪽 Spinner 제거 */

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UserController extends HttpServlet{
+public class ProductController extends HttpServlet{
 	
 	@Override
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,34 +35,9 @@ public class UserController extends HttpServlet{
 		try {
 			if(command.equals("main")) 
 			{	
-				forward=new ActionForward();
+				forward = new ActionForward();
 				forward.setRedirect(false);
 				forward.setNextPath("main.jsp");
-			}
-			else if(command.equals("signup"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form + "signup.jsp");
-			}			
-			else if(command.equals("do-signup"))
-			{
-				action = new UserSignup();
-				forward = action.execute(request, response);
-			}
-			else if(command.equals("signup-sucess"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form+"signup-sucess.jsp");
-			}
-			else if(command.equals("login"))
-			{
-				forward=new ActionForward();
-				forward.setNextPath(form+"login.jsp");
-			}
-			else if(command.equals("do-login"))
-			{	
-				action = new UserLogin();
-				forward = action.execute(request, response);
 			}
 			else if(command.equals("product_add"))
 			{
@@ -74,8 +49,6 @@ public class UserController extends HttpServlet{
 				forward = new ActionForward();
 				forward.setNextPath(form + "product_list.jsp");
 			}
-			
-			
 			// 화면이동 - isRedirext() 값에 따라 sendRedirect 또는 forward를 사용
 			// sendRedirect : 새로운 페이지에서는 request와 response객체가 새롭게 생성된다.
 			// forward : 현재 실행중인 페이지와 forwad에 의해 호출될 페이지는 request와 response 객체를 공유

@@ -48,8 +48,8 @@
                 <li class="inactivity">
                     <a href="">인스트</a>
                 </li>
-                <li class="inactivity">
-                    <a href="">블로그</a>
+                <li>
+                    <a href="product_add">상품 등록</a>
                 </li>
             </ul>
         </div>

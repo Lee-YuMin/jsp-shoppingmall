@@ -60,6 +60,4 @@ public class UserDTO implements Serializable {
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	
-	
 }

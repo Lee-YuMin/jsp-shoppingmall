@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 
 public class Dao {
 	Connection conn;
-	String tableName ="users";
+	String tableName ="users";  // Default Table
 	
 	Dao() {
 		this(null, "");
