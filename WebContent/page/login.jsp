@@ -9,7 +9,7 @@
 
 <body>    
     <div>
-        <form method="post" action="do-login" class="signup-container form-signup" name="userInfo" onsubmit="return checkValue_login()">
+        <form method="post" action="do_login" class="signup-container form-signup" name="userInfo" onsubmit="return checkValue_login()">
             <div class="grid-container">
                 <div class="grid-signup">
                     <div class="signup-title">로그인</div>

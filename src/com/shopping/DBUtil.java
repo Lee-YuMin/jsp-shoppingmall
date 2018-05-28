@@ -7,7 +7,7 @@ public class DBUtil {
 		Connection conn = null;
 
 		String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-		String DB_URL = "jdbc:mysql://127.0.0.1:3306/shopping?serverTimezone=UTC&autoReconnect=true&useSSL=false";
+		String DB_URL = "jdbc:mysql://127.0.0.1:3306/shopping?serverTimezone=UTC&autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8";
 		String DB_USER = "root";
 		String DB_PASSWORD = "0000";
 

@@ -19,9 +19,8 @@
 }
 
 
-.grid-signup input {
-  min-width: 300px;
-  margin-right: 100px;
+.input-grid {
+  max-width: 300px;
 }
 
 .signup-container {

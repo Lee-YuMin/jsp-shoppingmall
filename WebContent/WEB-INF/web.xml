@@ -10,14 +10,15 @@
   <servlet-mapping>
   	<servlet-name>userController</servlet-name>
   	<url-pattern>/signup</url-pattern>
-  	<url-pattern>/signup-sucess</url-pattern>
-  	<url-pattern>/do-signup</url-pattern>
+  	<url-pattern>/signup_sucess</url-pattern>
+  	<url-pattern>/do_signup</url-pattern>
   	<url-pattern>/login</url-pattern>
-  	<url-pattern>/do-login</url-pattern>
+  	<url-pattern>/do_login</url-pattern>
   	<url-pattern>/main</url-pattern>
   	
   	<url-pattern>/product_list</url-pattern>
   	<url-pattern>/product_add</url-pattern>
+  	<url-pattern>/do_product_add</url-pattern>
   </servlet-mapping>
   
 
@@ -29,4 +30,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
 </web-app>

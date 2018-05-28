@@ -44,22 +44,22 @@ public class UserController extends HttpServlet{
 				forward=new ActionForward();
 				forward.setNextPath(form + "signup.jsp");
 			}			
-			else if(command.equals("do-signup"))
+			else if(command.equals("do_signup"))
 			{
 				action = new UserSignup();
 				forward = action.execute(request, response);
 			}
-			else if(command.equals("signup-sucess"))
+			else if(command.equals("signup_sucess"))
 			{
 				forward=new ActionForward();
-				forward.setNextPath(form+"signup-sucess.jsp");
+				forward.setNextPath(form+"signup_sucess.jsp");
 			}
 			else if(command.equals("login"))
 			{
 				forward=new ActionForward();
 				forward.setNextPath(form+"login.jsp");
 			}
-			else if(command.equals("do-login"))
+			else if(command.equals("do_login"))
 			{	
 				action = new UserLogin();
 				forward = action.execute(request, response);
@@ -68,6 +68,11 @@ public class UserController extends HttpServlet{
 			{
 				forward = new ActionForward();
 				forward.setNextPath(form + "product_add.jsp");
+			}
+			else if(command.equals("do_product_add"))
+			{
+				action = new ProductAdd();
+				forward = action.execute(request, response);
 			}
 			else if(command.equals("product_list"))
 			{

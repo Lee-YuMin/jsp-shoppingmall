@@ -1,15 +1,17 @@
 package com.shopping;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO extends Dao{
-private static UserDAO instance;
+private static ProductDAO instance;
 	
 	public ProductDAO() {
 		// TODO table name insert
@@ -20,9 +22,9 @@ private static UserDAO instance;
 		super(conn, "products");
 	}
 	
-	public static UserDAO getInstance(){
+	public static ProductDAO getInstance(){
 		if(instance==null)
-			instance=new UserDAO();
+			instance=new ProductDAO();
 		return instance;
 	}
 
@@ -113,7 +115,11 @@ private static UserDAO instance;
 			ps.setInt(4, p.getPrice());
 			ps.setInt(5, p.getDiscount());
 			ps.setBoolean(6, p.isHot());
-			ps.setDate(7, p.getCreated_date());
+			
+			long time = System.currentTimeMillis(); 
+			SimpleDateFormat dayTime = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+			String str = dayTime.format(new Date(time));
+			ps.setString(7, str);
 
 			result = ps.executeUpdate(); // ps.executeUpdate(sql);
 		} catch (Exception e) {

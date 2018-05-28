@@ -5,3 +5,5 @@
 - DB에 이미지 저장 및 로딩 하는법 공부
 - MVC모델 DispatcherServlet 이해하고 Controller 나누기.  ex) http://doublesprogramming.tistory.com/84
 - 프로젝트 패키지 구조 다시잡기.
+- Product Insert  SendRedirect 에러 잡기
+- HOT 안들어감
