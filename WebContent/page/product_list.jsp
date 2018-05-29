@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UFT-8"
-    pageEncoding="UFT-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
-	<title>ìƒí’ˆ ë¦¬ìŠ¤íŠ¸</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>»óÇ° ¸®½ºÆ®</title>
 	<script type="text/javascript">
 		function addProduct(){
 			location.href="product_add";
@@ -16,24 +17,24 @@
 
 <div id="wrap">
 
-	<!-- ê¸€ëª©ë¡ ìœ„ ë¶€ë¶„-->
+	<!-- ±Û¸ñ·Ï À§ ºÎºÐ-->
 	<br>
 	<div id="topForm">
 		<c:if test="${sessionScope.sessionID!=null}">
-			<input type="button" value="ìƒí’ˆ ë“±ë¡" onclick="addProduct()">
+			<input type="button" value="»óÇ° µî·Ï" onclick="addProduct()">
 		</c:if>	
 	</div>
 	
-	<!-- ê²Œì‹œê¸€ ëª©ë¡ ë¶€ë¶„ -->
+	<!-- °Ô½Ã±Û ¸ñ·Ï ºÎºÐ -->
 	<br>
 	<div id="product">
 		<table id="pList" width="800" border="3" bordercolor="lightgray">
 			<tr heigh="30">
-				<td>ì´ë¦„</td>
-				<td>ì—°ë ¹ëŒ€</td>
-				<td>íƒ€ìž…</td>
-				<td>ê°€ê²©</td>
-				<td>í• ì¸ë¥ </td>
+				<td>ÀÌ¸§</td>
+				<td>¿¬·É´ë</td>
+				<td>Å¸ÀÔ</td>
+				<td>°¡°Ý</td>
+				<td>ÇÒÀÎ·ü</td>
 			</tr>
 		<c:forEach var="board" items="${requestScope.list}">
 			<tr>
@@ -57,11 +58,11 @@
 		</table>
 	</div>
 	
-	<!-- íŽ˜ì´ì§€ ë„˜ë²„ ë¶€ë¶„ -->
+	<!-- ÆäÀÌÁö ³Ñ¹ö ºÎºÐ -->
 	<br>
 	<div id="pageForm">
 		<c:if test="${startPage != 1}">
-			<a href='BoardListAction.bo?page=${startPage-1}'>[ ì´ì „ ]</a>
+			<a href='BoardListAction.bo?page=${startPage-1}'>[ ÀÌÀü ]</a>
 		</c:if>
 		
 		<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
@@ -74,22 +75,22 @@
 		</c:forEach>
 		
 		<c:if test="${endPage != maxPage }">
-			<a href='BoardListAction.bo?page=${endPage+1 }'>[ë‹¤ìŒ]</a>
+			<a href='BoardListAction.bo?page=${endPage+1 }'>[´ÙÀ½]</a>
 		</c:if>
 	</div>
 	
-	<!--  ê²€ìƒ‰ ë¶€ë¶„ -->
+	<!--  °Ë»ö ºÎºÐ -->
 	<br>
 	<div id="searchForm">
 		<form>
 			<select name="opt">
-				<option value="0">ì œëª©</option>
-				<option value="1">ë‚´ìš©</option>
-				<option value="2">ì œëª©+ë‚´ìš©</option>
-				<option value="3">ê¸€ì“´ì´</option>
+				<option value="0">Á¦¸ñ</option>
+				<option value="1">³»¿ë</option>
+				<option value="2">Á¦¸ñ+³»¿ë</option>
+				<option value="3">±Û¾´ÀÌ</option>
 			</select>
 			<input type="text" size="20" name="condition"/>&nbsp;
-			<input type="submit" value="ê²€ìƒ‰"/>
+			<input type="submit" value="°Ë»ö"/>
 		</form>	
 	</div>
 </div>	

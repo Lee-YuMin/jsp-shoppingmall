@@ -3,7 +3,7 @@
 <%
 	String contentPage=request.getParameter("contentPage");
 	if(contentPage==null)
-		contentPage="page/login.jsp";
+		contentPage="page/product_list.jsp";
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -29,6 +29,7 @@
     <link href="css/grid-signup.css" rel="stylesheet">
     <link href="css/grid-product-add.css" rel="stylesheet">
     <link href="css/signup-sucess.css" rel="stylesheet">
+    <link href="css/product-list.css" rel="stylesheet">
     
 </head>
 <body>

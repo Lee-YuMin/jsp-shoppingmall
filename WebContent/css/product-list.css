@@ -1,0 +1,16 @@
+#wrap {
+	width: 800px;
+	margin: 0 auto 0 auto;
+}
+
+#topForm {
+	text-align: right;
+}
+
+#product, #pageForm, #searchForm {
+	text-align: center;
+}
+
+#pList {
+	text-align: center;
+}
