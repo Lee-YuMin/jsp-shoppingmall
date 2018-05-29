@@ -71,7 +71,7 @@
 
                     <div class="product-add-input">
                         <input id="product-submit" class="btn btn-default" type="submit" value="상품등록">
-                        <input class="btn btn-default" type="submit" value="메인으로">
+                        <input class="btn btn-default" type="button" value="메인으로" onclick="window.location.href='main'">
                     </div>
                 </div>
             </div>

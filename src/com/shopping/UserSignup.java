@@ -26,7 +26,7 @@ public class UserSignup implements Action {
 			
 			// 가입성공
 			forward.setRedirect(true);
-	   		forward.setNextPath("signup-sucess");
+	   		forward.setNextPath("signup_sucess");
 			
 	   		// 가입성공 메시지를 세션에 담는다.
 	   		request.getSession().setAttribute("msg", "1");

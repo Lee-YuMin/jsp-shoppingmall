@@ -72,7 +72,7 @@
 
                     <div class="signup-input">
                         <input id="signup-submit" class="btn btn-default" type="submit" value="회원가입">
-                        <input class="btn btn-default" type="submit" value="메인으로">
+                        <input class="btn btn-default" type="button" value="메인으로" onclick="window.location.href='main'">
                     </div>
                 </div>
             </div>
