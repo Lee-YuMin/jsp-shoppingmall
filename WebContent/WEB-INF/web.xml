@@ -12,6 +12,8 @@
   	<url-pattern>/signup</url-pattern>
   	<url-pattern>/signup_sucess</url-pattern>
   	<url-pattern>/do_signup</url-pattern>
+  	<url-pattern>/do_user_delete</url-pattern>
+  	<url-pattern>/sucess_user_delete</url-pattern>
   	<url-pattern>/login</url-pattern>
   	<url-pattern>/do_login</url-pattern>
   	<url-pattern>/main</url-pattern>

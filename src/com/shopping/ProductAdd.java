@@ -32,8 +32,7 @@ public class ProductAdd implements Action {
 			// 로그인 실패시 메시지를  출력
 			Util.showAlert(response, "상품 등록에 실패하였습니다.");
 
-	   		forward.setRedirect(false);
-	   		forward.setNextPath("product_add");
+			return null;
 		}
 		else
 		{

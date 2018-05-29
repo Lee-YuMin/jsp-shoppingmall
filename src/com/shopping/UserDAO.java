@@ -93,19 +93,55 @@ public class UserDAO extends Dao {
 		return u;
 	}
 
-	int deleteUser(UserDTO u) {
+	int deleteUser(String id) {
 		int result = 0;
-		String query = "DELETE FROM " + tableName + " WHERE ID = ?";
-		try (PreparedStatement ps = conn.prepareStatement(query);) {
-			conn.setAutoCommit(true);
-			// 3.2 ���� ���� & ����
-			ps.setString(1, u.getId());
-			result = ps.executeUpdate(); // ps.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+//		String dbpw = "";
+		
+		try {
+			// 비밀번호 조회
+			StringBuffer query1 = new StringBuffer();
+			query1.append("SELECT PASSWORD FROM users WHERE ID=?");
 
-		return result;
+			// 회원 삭제
+			StringBuffer query2 = new StringBuffer();
+			query2.append("DELETE FROM users WHERE ID=?");
+
+			// 자동 커밋을 false로 한다.
+			conn.setAutoCommit(false);
+			
+			// 1. 아이디에 해당하는 비밀번호를 조회한다.
+			ps = conn.prepareStatement(query1.toString());
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) 
+			{
+//				dbpw = rs.getString("password");
+//				if (dbpw.equals(pw)) // 입력된 비밀번호와 DB비번 비교
+//				{
+					// 같을경우 회원삭제 진행
+					ps = conn.prepareStatement(query2.toString());
+					ps.setString(1, id);
+					ps.executeUpdate();
+					conn.commit(); 
+					result = 1; // 삭제 성공
+//				} else {
+//					result = 0; // 비밀번호 비교결과 - 다름
+//				}
+			}
+
+			return result;
+
+		} catch (Exception sqle) {
+			try {
+				conn.rollback(); // 오류시 롤백
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			throw new RuntimeException(sqle.getMessage());
+		}
 	}
 
 	int insertUser(UserDTO u) {

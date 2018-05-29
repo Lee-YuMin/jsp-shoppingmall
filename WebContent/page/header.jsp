@@ -9,8 +9,8 @@
     <div>
         <div class='center-div'>
             <ul>
-                <li class="inactivity">
-                    <a href="">공지사항</a>
+                <li>
+                    <a href="do_user_delete">회원탈퇴</a>
                 </li>
                 <li class="inactivity">
                     <a href="">리뷰</a>

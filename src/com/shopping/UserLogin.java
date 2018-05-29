@@ -26,17 +26,14 @@ public class UserLogin implements Action {
 	   		request.setAttribute("fail", "0");
 	   		
 			Util.showAlert(response, "비밀번호가 틀렸습니다.");
-			
-	   		forward.setRedirect(false);
-	   		forward.setNextPath("login");
+			return null;
 		}
 		else if(check == -1) // 아이디가 없을 경우 -> 다시 로그인 화면으로 이동
 		{
 			request.setAttribute("fail", "-1");
 			
 			Util.showAlert(response, "아이디가 존재하지 않습니다.");
-	   		forward.setRedirect(false);
-	   		forward.setNextPath("login");
+			return null;
 		}
 		else
 		{
