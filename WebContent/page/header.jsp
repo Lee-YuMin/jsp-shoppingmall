@@ -59,7 +59,7 @@
         <header>
             <div id="contain-banner">
                 <span class="centered">
-                    <a id="banner" href="main.jsp">
+                    <a id="banner" href="main">
                         <img src="image/banner.jpg">
                     </a>
                 </span>

@@ -84,10 +84,9 @@
 	<div id="searchForm">
 		<form>
 			<select name="opt">
-				<option value="0">제목</option>
-				<option value="1">내용</option>
-				<option value="2">제목+내용</option>
-				<option value="3">글쓴이</option>
+				<option value="0">이름</option>
+				<option value="1">연령대</option>
+				<option value="2">타입</option>
 			</select>
 			<input type="text" size="20" name="condition"/>&nbsp;
 			<input type="submit" value="검색"/>
