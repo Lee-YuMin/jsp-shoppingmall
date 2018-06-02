@@ -36,10 +36,10 @@
 				<td>가격</td>
 				<td>할인률</td>
 			</tr>
-		<c:forEach var="board" items="${requestScope.list}">
+		<c:forEach var="product" items="${requestScope.list}">
 			<tr>
 				<td>
-					<a href="product_update?num=${product.squence}&pageNum=${pageNum}">
+					<a href="product_update?num=${product.sequence}">
 					${product.product_name}
 					</a>
 				</td>
@@ -47,9 +47,7 @@
 					${product.age_group}
 				</td>
 				<td>
-					<a href="#">
 					${product.type}
-					</a>
 				</td>
 				<td>${product.price}</td>
 				<td>${product.discount}</td>

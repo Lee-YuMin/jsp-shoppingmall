@@ -35,9 +35,12 @@ public class UserController extends HttpServlet{
 		try {
 			if(command.equals("main")) 
 			{	
-				forward=new ActionForward();
-				forward.setRedirect(false);
-				forward.setNextPath("main.jsp");
+//				forward=new ActionForward();
+//				forward.setRedirect(false);
+//				forward.setNextPath("main.jsp");
+
+				action = new ProductListAction();
+				forward = action.execute(request, response);
 			}
 			else if(command.equals("signup"))
 			{
@@ -94,7 +97,11 @@ public class UserController extends HttpServlet{
 				forward = new ActionForward();
 				forward.setNextPath(form + "sucess_user_delete.jsp");
 			}
-				
+			else if(command.equals("product_update")) {
+				forward = new ActionForward();
+				forward.setNextPath(form + "product_update.jsp");
+			}
+			
 						
 			// 화면이동 - isRedirext() 값에 따라 sendRedirect 또는 forward를 사용
 			// sendRedirect : 새로운 페이지에서는 request와 response객체가 새롭게 생성된다.

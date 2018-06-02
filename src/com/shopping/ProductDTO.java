@@ -3,7 +3,7 @@ package com.shopping;
 import java.sql.Date;
 
 public class ProductDTO {
-	private int Squence;
+	private int Sequence;
 	private String product_name;
 	private String age_group;
 	private String type;
@@ -13,11 +13,11 @@ public class ProductDTO {
 	private Date created_date;
 	
 	
-	public int getSquence() {
-		return Squence;
+	public int getSequence() {
+		return Sequence;
 	}
-	public void setSquence(int squence) {
-		Squence = squence;
+	public void setSequence(int squence) {
+		Sequence = squence;
 	}
 	public String getProduct_name() {
 		return product_name;

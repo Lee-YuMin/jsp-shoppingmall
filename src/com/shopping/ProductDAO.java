@@ -39,7 +39,7 @@ private static ProductDAO instance;
 		try {
 			// 시퀀스 값을 가져온다. (DUAL : 시퀀스 값을 가져오기위한 임시 테이블)
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT squence.NEXTVAL FROM products");
+			sql.append("SELECT sequence.NEXTVAL FROM products");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			// 쿼리 실행
@@ -66,7 +66,8 @@ private static ProductDAO instance;
 		Statement stmt = null;
 
 		try {
-			StringBuffer sql = new StringBuffer();
+//			StringBuffer sql = new StringBuffer();
+			String sql;
 			
 			// 글목록 전체를 보여줄 때
 			if(opt == null)
@@ -75,79 +76,85 @@ private static ProductDAO instance;
 				// BOARD_RE_SEQ(답변글 순서)의 오름차순으로 정렬 한 후에
 				// 10개의 글을 한 화면에 보여주는(start번째 부터 start+9까지) 쿼리
 				// desc : 내림차순, asc : 오름차순 ( 생략 가능 )
-				sql.append("select * from ");
-				sql.append("(select rownum rnum, squence, product_name, age_group");
-				sql.append(", type, price, discount, hot, created_date");
-				sql.append("FROM");
-				sql.append(" (select * from products order by squence desc, created_date asc)) ");
-				sql.append("where rnum>=? and rnum<=?");
+//				sql.append("SET @rownum:=0; ");
+//				sql.append("select * from ");
+//				sql.append("(select @rownum:=@rownum+1 as rownum, sequence, product_name, age_group, type, price, discount, hot, created_date ");
+//				sql.append("FROM");
+//				sql.append(" (select * from products order by sequence desc, created_date asc)A)B ");
+//				sql.append("where rownum>=? and rownum<=?");
 				
-				pstmt = conn.prepareStatement(sql.toString());
+//				sql = "SET @rownum:=0; SELECT @rownum:=@rownum+1, sequence, product_name, age_group, type, price, discount, hot, created_date FROM products ORDER BY sequence desc, created_date asc WHERE @rownum:=@rownum+1>=? AND @rownum:=@rownum+1<=?";
+				sql = "SELECT * FROM products WHERE sequence>=? AND sequence<=? ORDER BY sequence desc, created_date asc";
+				
+				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, start+9);
 				
 				// StringBuffer를 비운다.
-				sql.delete(0, sql.toString().length());
+//				sql.delete(0, sql.toString().length());
 			}
 			else if(opt.equals("0")) // 이름으로 검색
 			{
-				sql.append("select * from ");
-				sql.append("(select rownum rnum, squence, product_name, age_group");
-				sql.append(", type, price, discount, hot, created_date");
-				sql.append("FROM ");
-				sql.append("(select * from products where product_name like ? ");
-				sql.append("order BY squence desc, created_date asc)) ");
-				sql.append("where rnum>=? and rnum<=?");
-				
-				pstmt = conn.prepareStatement(sql.toString());
-				pstmt.setString(1, "%"+condition+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, start+9);
-				
-				sql.delete(0, sql.toString().length());
+//				sql.append("SET @rownum:=0; ");
+//				sql.append("select * from ");
+//				sql.append("(select @rownum:=@rownum+1 as rownum, sequence, product_name, age_group");
+//				sql.append(", type, price, discount, hot, created_date");
+//				sql.append("FROM ");
+//				sql.append("(select * from products where product_name like ? ");
+//				sql.append("order BY sequence desc, created_date asc)A)B ");
+//				sql.append("where rownum>=? and rownum<=?");
+//				
+//				pstmt = conn.prepareStatement(sql.toString());
+//				pstmt.setString(1, "%"+condition+"%");
+//				pstmt.setInt(2, start);
+//				pstmt.setInt(3, start+9);
+//				
+//				sql.delete(0, sql.toString().length());
 			}
 			else if(opt.equals("1")) // 연령대로 검색
 			{
-				sql.append("select * from ");
-				sql.append("(select rownum rnum, squence, product_name, age_group");
-				sql.append(", type, price, discount, hot, created_date");
-				sql.append("FROM ");
-				sql.append("(select * from products where age_group like ? ");
-				sql.append("order BY squence desc, created_date asc)) ");
-				sql.append("where rnum>=? and rnum<=?");
-				
-				pstmt = conn.prepareStatement(sql.toString());
-				pstmt.setString(1, "%"+condition+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, start+9);
-				
-				sql.delete(0, sql.toString().length());
+//				sql.append("SET @rownum:=0; ");
+//				sql.append("select * from ");
+//				sql.append("(select @rownum:=@rownum+1 as rownum, sequence, product_name, age_group");
+//				sql.append(", type, price, discount, hot, created_date");
+//				sql.append("FROM ");
+//				sql.append("(select * from products where age_group like ? ");
+//				sql.append("order BY sequence desc, created_date asc)A)B ");
+//				sql.append("where rownum>=? and rownum<=?");
+//				
+//				pstmt = conn.prepareStatement(sql.toString());
+//				pstmt.setString(1, "%"+condition+"%");
+//				pstmt.setInt(2, start);
+//				pstmt.setInt(3, start+9);
+//				
+//				sql.delete(0, sql.toString().length());
 			}
 			else if(opt.equals("2")) // 타입으로 검색
 			{
-				sql.append("select * from ");
-				sql.append("(select rownum rnum, squence, product_name, age_group");
-				sql.append(", type, price, discount, hot, created_date");
-				sql.append("FROM ");
-				sql.append("(select * from products where type like ?");
-//				sql.append("(select * from products where where1 like ? OR where2 like ? ");  조건이 2개 이상일때 표현
-				sql.append("order BY squence desc, created_date asc)) ");
-				sql.append("where rnum>=? and rnum<=?");
-				
-				pstmt = conn.prepareStatement(sql.toString());
-				pstmt.setString(1, "%"+condition+"%");
-//				pstmt.setString(2, "%"+condition+"%");
-				pstmt.setInt(3, start);
-				pstmt.setInt(4, start+9);
-				
-				sql.delete(0, sql.toString().length());
+//				sql.append("SET @rownum:=0; ");
+//				sql.append("select * from ");
+//				sql.append("(select @rownum:=@rownum+1 as rownum, sequence, product_name, age_group");
+//				sql.append(", type, price, discount, hot, created_date");
+//				sql.append("FROM ");
+//				sql.append("(select * from products where type like ?");
+////				sql.append("(select * from products where where1 like ? OR where2 like ? ");  조건이 2개 이상일때 표현
+//				sql.append("order BY sequence desc, created_date asc)A)B ");
+//				sql.append("where rownum>=? and rownum<=?");
+//				
+//				pstmt = conn.prepareStatement(sql.toString());
+//				pstmt.setString(1, "%"+condition+"%");
+////				pstmt.setString(2, "%"+condition+"%");
+//				pstmt.setInt(3, start);
+//				pstmt.setInt(4, start+9);
+//				
+//				sql.delete(0, sql.toString().length());
 			}
 
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
 				ProductDTO product = new ProductDTO();
-				product.setSquence(rs.getInt("squence"));
+				product.setSequence(rs.getInt("sequence"));
 				product.setProduct_name(rs.getString("product_name"));
 				product.setAge_group(rs.getString("age_group"));
 				product.setType(rs.getString("type"));

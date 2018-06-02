@@ -22,6 +22,7 @@
   	<url-pattern>/get_product_list</url-pattern>
   	<url-pattern>/product_add</url-pattern>
   	<url-pattern>/do_product_add</url-pattern>
+  	<url-pattern>/product_update</url-pattern>
   </servlet-mapping>
   
 
