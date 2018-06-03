@@ -74,7 +74,7 @@ public class UserController extends HttpServlet{
 			}
 			else if(command.equals("do_product_add"))
 			{
-				action = new ProductAdd();
+				action = new ProductAddAction();
 				forward = action.execute(request, response);
 			}
 			else if(command.equals("get_product_list"))

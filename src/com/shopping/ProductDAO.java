@@ -120,11 +120,11 @@ private static ProductDAO instance;
 //				sql.append("where rownum>=? and rownum<=?");
 				
 //				sql = "SET @rownum:=0; SELECT @rownum:=@rownum+1, sequence, product_name, age_group, type, price, discount, hot, created_date FROM products ORDER BY sequence desc, created_date asc WHERE @rownum:=@rownum+1>=? AND @rownum:=@rownum+1<=?";
-				sql = "SELECT * FROM products WHERE sequence>=? AND sequence<=? ORDER BY sequence desc, created_date asc";
+				sql = "SELECT * FROM products ORDER BY sequence desc, created_date asc";
 				
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, start+9);
+//				pstmt.setInt(1, start);
+//				pstmt.setInt(2, start+9);
 				
 				// StringBuffer를 비운다.
 //				sql.delete(0, sql.toString().length());
@@ -144,12 +144,12 @@ private static ProductDAO instance;
 //				pstmt.setString(1, "%"+condition+"%");
 //				pstmt.setInt(2, start);
 //				pstmt.setInt(3, start+9);
-				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE product_name like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE product_name like ? ORDER BY sequence desc, created_date asc)as A)as B";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, "%"+condition+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, start+9);
+//				pstmt.setInt(2, start);
+//				pstmt.setInt(3, start+9);
 //				
 //				sql.delete(0, sql.toString().length());
 			}
@@ -171,12 +171,12 @@ private static ProductDAO instance;
 //				
 //				sql.delete(0, sql.toString().length());
 				
-				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE age_group like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE age_group like ? ORDER BY sequence desc, created_date asc)as A)as B";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, "%"+condition+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, start+9);
+//				pstmt.setInt(2, start);
+//				pstmt.setInt(3, start+9);
 				
 			}
 			else if(opt.equals("2")) // 타입으로 검색
@@ -199,12 +199,12 @@ private static ProductDAO instance;
 //				
 //				sql.delete(0, sql.toString().length());
 				
-				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE type like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE type like ? ORDER BY sequence desc, created_date asc)as A)as B";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, "%"+condition+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, start+9);
+//				pstmt.setInt(2, start);
+//				pstmt.setInt(3, start+9);
 			}
 
 			rs = pstmt.executeQuery();

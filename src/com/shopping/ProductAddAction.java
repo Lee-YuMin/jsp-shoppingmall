@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ProductAdd implements Action {
+public class ProductAddAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -38,9 +38,9 @@ public class ProductAdd implements Action {
 		{
 	   		// 로그인 성공후 메인화면으로 이동
 	   		forward.setRedirect(true);
-	   		forward.setNextPath("product_add");
+	   		forward.setNextPath("get_product_list");
 
-			Util.showAlert(response, "상품 등록에 성공하였습니다.");
+//			Util.showAlert(response, "상품 등록에 성공하였습니다.");
 		}
    		
 		return forward;

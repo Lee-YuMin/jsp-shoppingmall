@@ -3,8 +3,8 @@
   <display-name>shopping-mall</display-name>
   
   <servlet>
-  <servlet-name>userController</servlet-name>
-  <servlet-class>com.shopping.UserController</servlet-class>
+	  <servlet-name>userController</servlet-name>
+	  <servlet-class>com.shopping.UserController</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -38,5 +38,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+
 </web-app>
