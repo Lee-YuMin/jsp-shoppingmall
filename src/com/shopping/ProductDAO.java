@@ -89,7 +89,8 @@ private static ProductDAO instance;
 		return product;
 	} // end getDetail()
 	
-		
+
+	
 	ArrayList<ProductDTO> getProductList(HashMap<String, Object> listOpt) {
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 		
@@ -169,6 +170,14 @@ private static ProductDAO instance;
 //				pstmt.setInt(3, start+9);
 //				
 //				sql.delete(0, sql.toString().length());
+				
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE age_group like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+condition+"%");
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, start+9);
+				
 			}
 			else if(opt.equals("2")) // 타입으로 검색
 			{
@@ -189,6 +198,13 @@ private static ProductDAO instance;
 //				pstmt.setInt(4, start+9);
 //				
 //				sql.delete(0, sql.toString().length());
+				
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE type like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+condition+"%");
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, start+9);
 			}
 
 			rs = pstmt.executeQuery();
@@ -243,16 +259,32 @@ private static ProductDAO instance;
 		return p;
 	}
 
-	int deleteProduct(ProductDTO p) {
+	int deleteProduct(int sequence) {
 		int result = 0;
-		String query = "DELETE FROM " + tableName + " WHERE sequence = ?";
-		try (PreparedStatement ps = conn.prepareStatement(query);) {
-			conn.setAutoCommit(true);
+
+		try {
+			conn.setAutoCommit(false); // 자동 커밋을 false로 한다.
+
+			String sql;
 			
-			ps.setString(1, p.getProduct_name());
-			result = ps.executeUpdate(); // ps.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
+			sql = "DELETE FROM products WHERE sequence = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sequence);
+			
+			int flag = pstmt.executeUpdate();
+			if(flag > 0){
+				result = 1;
+				conn.commit(); // 완료시 커밋
+			}	
+			
+		} catch (Exception e) {
+			try {
+				conn.rollback(); // 오류시 롤백
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			}
+			throw new RuntimeException(e.getMessage());
 		}
 
 		return result;

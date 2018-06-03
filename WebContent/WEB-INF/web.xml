@@ -25,6 +25,7 @@
   	<url-pattern>/product_update</url-pattern>
   	<url-pattern>/do_product_update</url-pattern>
   	<url-pattern>/get_product_update</url-pattern>
+  	<url-pattern>/do_product_delete</url-pattern>
   	
   </servlet-mapping>
   

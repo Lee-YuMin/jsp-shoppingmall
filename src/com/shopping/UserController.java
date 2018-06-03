@@ -109,6 +109,10 @@ public class UserController extends HttpServlet{
 				forward = new ActionForward();
 				forward.setNextPath(form + "product_update.jsp");
 			}
+			else if(command.equals("do_product_delete")) {
+				action = new ProductDeleteAction();
+				forward = action.execute(request, response);
+			}
 			
 			
 						
