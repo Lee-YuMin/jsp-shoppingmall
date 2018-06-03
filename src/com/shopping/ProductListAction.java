@@ -12,7 +12,7 @@ public class ProductListAction implements Action {
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-ActionForward forward = new ActionForward();
+		ActionForward forward = new ActionForward();
 		
 		// 현재 페이지 번호 만들기
 		int spage = 1;

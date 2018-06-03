@@ -97,10 +97,19 @@ public class UserController extends HttpServlet{
 				forward = new ActionForward();
 				forward.setNextPath(form + "sucess_user_delete.jsp");
 			}
+			else if(command.equals("do_product_update")) {
+				action = new ProductUpdateAction();
+				forward = action.execute(request, response);
+			}
+			else if(command.equals("get_product_update")) {
+				action = new ProductUpdateFormAction();
+				forward = action.execute(request, response);
+			}
 			else if(command.equals("product_update")) {
 				forward = new ActionForward();
 				forward.setNextPath(form + "product_update.jsp");
 			}
+			
 			
 						
 			// 화면이동 - isRedirext() 값에 따라 sendRedirect 또는 forward를 사용

@@ -39,7 +39,7 @@
 		<c:forEach var="product" items="${requestScope.list}">
 			<tr>
 				<td>
-					<a href="product_update?num=${product.sequence}">
+					<a href="get_product_update?sequence=${product.sequence}&page=${pageNum}">
 					${product.product_name}
 					</a>
 				</td>

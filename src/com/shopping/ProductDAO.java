@@ -54,7 +54,42 @@ private static ProductDAO instance;
 		return result;	
 	} // end getSeq
 	
+	// 상세보기
+	public ProductDTO getDetail(int sequence)
+	{	
+		ProductDTO product = null;
+		
+		try {
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT * FROM products WHERE sequence = ?");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, sequence);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				product = new ProductDTO();
+				product.setSequence(sequence);
+				product.setProduct_name(rs.getString("product_name"));
+				product.setAge_group(rs.getString("age_group"));
+				product.setType(rs.getString("type"));
+				product.setPrice(rs.getInt("price"));
+				product.setDiscount(rs.getInt("discount"));
+				product.setHot(rs.getBoolean("hot"));
+				product.setCreated_date(rs.getDate("created_date"));
+			
+			}
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		return product;
+	} // end getDetail()
 	
+		
 	ArrayList<ProductDTO> getProductList(HashMap<String, Object> listOpt) {
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 		
@@ -108,6 +143,12 @@ private static ProductDAO instance;
 //				pstmt.setString(1, "%"+condition+"%");
 //				pstmt.setInt(2, start);
 //				pstmt.setInt(3, start+9);
+				sql = "SELECT * FROM (SELECT * from(SELECT * FROM products WHERE product_name like ? ORDER BY sequence desc, created_date asc)as A)as B WHERE sequence>=? AND sequence<=? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+condition+"%");
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, start+9);
 //				
 //				sql.delete(0, sql.toString().length());
 			}
@@ -174,6 +215,7 @@ private static ProductDAO instance;
 
 	
 	ProductDTO selectProduct(ProductDTO p) {
+		// 현재는 안쓰는듯
 		String query = "SELECT * FROM " + tableName + " WHERE product_name = ?";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -203,7 +245,7 @@ private static ProductDAO instance;
 
 	int deleteProduct(ProductDTO p) {
 		int result = 0;
-		String query = "DELETE FROM " + tableName + " WHERE product_name = ?";
+		String query = "DELETE FROM " + tableName + " WHERE sequence = ?";
 		try (PreparedStatement ps = conn.prepareStatement(query);) {
 			conn.setAutoCommit(true);
 			
@@ -244,8 +286,8 @@ private static ProductDAO instance;
 
 	int updateProduct(ProductDTO p) {
 		int result = 0;
-		String sql = "UPDATE " + tableName + " SET product_name=?, age_group=?, type=?, price=?, discount=?, hot=?, created_date=?"
-				+ " WHERE product_name = ?"; 
+		String sql = "UPDATE " + tableName + " SET product_name=?, age_group=?, type=?, price=?, discount=?, hot=?"
+				+ " WHERE sequence = ?"; 
 		try (PreparedStatement ps = conn.prepareStatement(sql);) {
 			conn.setAutoCommit(true);
 			ps.setString(1, p.getProduct_name());
@@ -254,7 +296,7 @@ private static ProductDAO instance;
 			ps.setInt(4, p.getPrice());
 			ps.setInt(5, p.getDiscount());
 			ps.setBoolean(6, p.isHot());
-			ps.setDate(7, p.getCreated_date());
+			ps.setInt(7, p.getSequence());
 			
 			result = ps.executeUpdate();
 		} catch (Exception e) {
