@@ -22,7 +22,7 @@ public class ProductAddAction implements Action {
 		p.setType(request.getParameter("type"));
 		p.setPrice(Integer.parseInt(request.getParameter("price")));
 		p.setDiscount(Integer.parseInt(request.getParameter("discount")));
-		p.setHot(Boolean.parseBoolean(request.getParameter("hot")));
+		p.setHot(request.getParameter("hot") != null ? true : false);
 		
 		// DB에서 아이디, 비밀번호 확인
 		ProductDAO dao = ProductDAO.getInstance();

@@ -66,7 +66,7 @@
                         <label class="form-check-label">핫 체크</label>
                     </div>
                     <div class="product-add-hot-input input-grid">
-                        <input type="checkbox" class="form-check-input" name="hot">
+                        <input type="checkbox" class="form-check-input" name="hot" value="hot">
                     </div>
 
                     <div class="product-add-input">

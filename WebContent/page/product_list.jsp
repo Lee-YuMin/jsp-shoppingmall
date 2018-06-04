@@ -35,6 +35,7 @@
 				<td>타입</td>
 				<td>가격</td>
 				<td>할인률</td>
+				<td>HOT</td>
 				<td>생성일자</td>
 			</tr>
 		<c:forEach var="product" items="${requestScope.list}">
@@ -52,6 +53,7 @@
 				</td>
 				<td>${product.price}</td>
 				<td>${product.discount}</td>
+				<td>${product.hot}</td>
 				<td>${product.created_date}</td>
 				
 			</tr>
