@@ -10,6 +10,7 @@ public class UserSignup implements Action {
 			HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		request.setCharacterEncoding("UTF-8");
 		
 		UserDAO dao = UserDAO.getInstance();
 		UserDTO user = new UserDTO();

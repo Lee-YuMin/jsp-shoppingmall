@@ -11,6 +11,7 @@ public class UserLogin implements Action {
 		
 		ActionForward forward = new ActionForward();
 		HttpSession session=request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		
 		// 아이디와 비밀번호를 가져온다.
 		String id = request.getParameter("id");

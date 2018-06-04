@@ -10,6 +10,7 @@ public class ProductUpdateFormAction implements Action
 			HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		request.setCharacterEncoding("UTF-8");
 		
 		// 페이지 번호와 글 번호를 가져온다.
 		String pageNum = request.getParameter("page");

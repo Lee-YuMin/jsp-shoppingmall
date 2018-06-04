@@ -13,6 +13,7 @@ public class ProductAddAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		HttpSession session=request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		
 		ProductDTO p = new ProductDTO();
 		

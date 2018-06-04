@@ -12,6 +12,7 @@ public class ProductUpdateAction implements Action {
 			HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		request.setCharacterEncoding("UTF-8");
 		
 		// 답글 작성 후 원래 페이지로 돌아가기 위해 페이지 번호가 필요하다.
 		String pageNum = request.getParameter("page");
