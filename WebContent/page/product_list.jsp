@@ -28,17 +28,21 @@
 	<!-- 게시글 목록 부분 -->
 	<br>
 	<div id="product">
-		<table id="pList" width="800" border="3" bordercolor="lightgray">
-			<tr heigh="30">
-				<td>이름</td>
-				<td>연령대</td>
-				<td>타입</td>
-				<td>가격</td>
-				<td>할인률</td>
-				<td>HOT</td>
-				<td>생성일자</td>
+		<table id="pList" width="800" border="3" bordercolor="lightgray" class="table table-condensed">
+		<thead>
+			<tr height="30">
+				<th id="checkHeader" hidden="false">체크</th>
+				<th>이름</th>
+				<th>연령대</th>
+				<th>타입</th>
+				<th>가격</th>
+				<th>할인률</th>
+				<th>HOT</th>
+				<th>생성일자</th>
 			</tr>
+		</thead>
 		<c:forEach var="product" items="${requestScope.list}">
+		<tbody>
 			<tr>
 				<td>
 					<a href="get_product_update?sequence=${product.sequence}&page=${pageNum}">
@@ -57,6 +61,7 @@
 				<td>${product.created_date}</td>
 				
 			</tr>
+		</tbody>
 		</c:forEach>
 		</table>
 	</div>
