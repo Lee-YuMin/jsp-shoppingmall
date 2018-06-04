@@ -9,7 +9,39 @@
 	<script type="text/javascript">
 		function addProduct(){
 			location.href="product_add";
-		}		
+		}
+		
+		function modeDelete(){
+			var values = document.getElementsByName('delete_id');
+			var isChecked = false;
+			var sequences = [];
+			
+			for(var i=0; i<values.length; i++){
+				if(values[i].checked){
+					sequences.push(values[i].value);
+				}	
+			}
+			
+			if(sequences.length != 0){
+				var form = document.createElement('form');
+				
+				sequences.forEach(function(v){
+					 var input=document.createElement("input");
+					 input.type = "text";
+					 input.name = 'delete_id';
+					 input.value = v;
+					 form.appendChild(input);
+				})
+				form.name = 'form';
+				form.method = 'post';
+				form.action = "product_multi_delete"; 
+				document.body.appendChild(form);
+				form.submit(); 
+			}
+			else{
+				return;
+			}
+		}
 	</script>
 
 </head>
@@ -21,7 +53,7 @@
 	<br>
 	<div id="topForm">
 		<c:if test="${sessionScope.sessionID!=null}">
-			<input type="button" value="삭제 모드" onclick="modeDelete()">
+			<input type="button" value="선택 삭제" onclick="modeDelete()">
 			<input type="button" value="상품 등록" onclick="addProduct()">
 		</c:if>	
 	</div>

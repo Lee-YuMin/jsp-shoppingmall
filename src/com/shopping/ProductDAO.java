@@ -289,6 +289,40 @@ private static ProductDAO instance;
 
 		return result;
 	}
+	
+	int multiDeleteProduct(String[] sequences) {
+		int result = 0;
+		int flag = 0;
+		
+		try {
+			conn.setAutoCommit(false); // 자동 커밋을 false로 한다.
+			
+			for(int i=0; i<sequences.length; i++)
+			{
+				String sql;
+				
+				sql = "DELETE FROM products WHERE sequence = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, sequences[i]);
+				flag = pstmt.executeUpdate();
+			}
+			if(flag > 0){
+				result = 1;
+				conn.commit(); // 완료시 커밋
+			}
+			
+		} catch (Exception e) {
+			try {
+				conn.rollback(); // 오류시 롤백
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			}
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		return result;
+	}
 
 	int insertProduct(ProductDTO p) {
 		int result = 0;

@@ -118,7 +118,10 @@ public class UserController extends HttpServlet{
 				action = new ProductDeleteAction();
 				forward = action.execute(request, response);
 			}
-			
+			else if(command.equals("product_multi_delete")) {
+				action = new ProductMultiDeleteAction();
+				forward = action.execute(request, response);
+			}
 			
 						
 			// 화면이동 - isRedirext() 값에 따라 sendRedirect 또는 forward를 사용
