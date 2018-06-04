@@ -15,6 +15,7 @@
   	<url-pattern>/do_user_delete</url-pattern>
   	<url-pattern>/sucess_user_delete</url-pattern>
   	<url-pattern>/login</url-pattern>
+  	<url-pattern>/logout</url-pattern>
   	<url-pattern>/do_login</url-pattern>
   	<url-pattern>/main</url-pattern>
   	

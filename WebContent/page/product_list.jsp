@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		function addProduct(){
 			location.href="product_add";
-		}
+		}		
 	</script>
 
 </head>
@@ -21,6 +21,7 @@
 	<br>
 	<div id="topForm">
 		<c:if test="${sessionScope.sessionID!=null}">
+			<input type="button" value="삭제 모드" onclick="modeDelete()">
 			<input type="button" value="상품 등록" onclick="addProduct()">
 		</c:if>	
 	</div>
@@ -31,7 +32,9 @@
 		<table id="pList" width="800" border="3" bordercolor="lightgray" class="table table-condensed">
 		<thead>
 			<tr height="30">
-				<th id="checkHeader" hidden="false">체크</th>
+			<c:if test="${sessionScope.sessionID!=null}">
+				<th>체크</th>
+			</c:if>
 				<th>이름</th>
 				<th>연령대</th>
 				<th>타입</th>
@@ -44,6 +47,11 @@
 		<c:forEach var="product" items="${requestScope.list}">
 		<tbody>
 			<tr>
+				<c:if test="${sessionScope.sessionID!=null}">
+					<td>
+						<input type="checkbox" class="form-check-input" name="delete_id" value="${product.sequence}">
+					</td>
+				</c:if>
 				<td>
 					<a href="get_product_update?sequence=${product.sequence}&page=${pageNum}">
 					${product.product_name}

@@ -62,6 +62,11 @@ public class UserController extends HttpServlet{
 				forward=new ActionForward();
 				forward.setNextPath(form+"login.jsp");
 			}
+			else if(command.equals("logout"))
+			{
+				action = new UserLogoutAction();
+				forward = action.execute(request, response);
+			}
 			else if(command.equals("do_login"))
 			{	
 				action = new UserLogin();

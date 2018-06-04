@@ -22,7 +22,7 @@
                 </li>
                 <li>
            			<c:if test="${sessionScope.sessionID!=null}">
-						<a href="">로그아웃</a>
+						<a href="logout">로그아웃</a>
 					</c:if>	
 					<c:if test="${sessionScope.sessionID==null}">
 						<a href="login">로그인</a>
