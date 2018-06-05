@@ -27,7 +27,7 @@
         <form method="post" action="do_product_update?sequence=${product.sequence}" class="product-add-container form-product-add" name="productInfo" >
             <div class="grid-container">
                 <div class="grid-product-add">
-                    <div class="product-add-title">상품 등록</div>
+                    <div class="product-add-title">상품 수정</div>
 
                     <div class="product-add-product-name-title">
                         <label class="form-check-label">상품이름</label>
